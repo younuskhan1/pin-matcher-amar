@@ -2,12 +2,15 @@ function generatePin() {
     const randomNumber = Math.round(Math.random() * 10000);
     return randomNumber;
 }
-let obtainPin;
+
+
+let obtainPinString;
+
 function receivedPin() {
-    obtainPin = generatePin();
-    const obtainPinString = obtainPin.toString();
+    const obtainPin = generatePin();
+    obtainPinString = obtainPin.toString();
     if (obtainPinString.length === 4) {
-        return obtainPin;
+        return obtainPinString;
     } else {
         return receivedPin();
     }
@@ -40,12 +43,14 @@ for (btn of buttons) {
     })
 }
 
-const failureMessage = document.getElementById("failure-message");
-const successMessage = document.getElementById("success-message");
+
+
 document.getElementById("button-submit").addEventListener("click", function () {
     const typedPinInCalculator = calculatorInputField.value;
-    const obtainPinString = obtainPin.toString();
-    console.log(typedPinInCalculator, obtainPinString);
+
+    const failureMessage = document.getElementById("failure-message");
+    const successMessage = document.getElementById("success-message");
+
     if (typedPinInCalculator === obtainPinString) {
         successMessage.style.display = "block";
         failureMessage.style.display = "none";
